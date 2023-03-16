@@ -11,52 +11,102 @@ const questions = [
   },
   {
     type: "input",
+    name: "description",
+    message: "Give a brief description of what the project is:",
+  },
+  {
+    type: "input",
     name: "purpose",
     message:
       "What is the intended purpose of the application? What problem is it trying to solve?",
   },
   {
     type: "input",
-    name: "install",
+    name: "userStory",
+    message: "What is the User Story for this application? Copy and Paste:",
+  },
+  {
+    type: "input",
+    name: "acceptanceCriteria",
     message:
-      "How can a user install the applicaiton and make it ready for use?",
+      "What is the technical Acceptance Criteria for this application? Copy and Paste:",
   },
   {
     type: "input",
     name: "use",
-    message: "How does the user use the application once it is installed?",
+    message:
+      "What functions will the user need to use the application once it is installed?",
   },
   {
     type: "input",
-    name: "issues",
-    message: "How can the user report errors or problems?",
+    name: "license",
+    message: "What license is applied to this project?",
   },
   {
     type: "input",
-    name: "contributions",
-    message: "How can the user contribute to the project?",
+    name: "githubUsername",
+    message: "What is your github username?",
+  },
+  {
+    type: "input",
+    name: "repoName",
+    message: "What is the name of the repository on github?",
+  },
+  {
+    type: "input",
+    name: "email",
+    message: "What is your email address?",
+  },
+  {
+    type: "input",
+    name: "bonus",
+    message: "What is the bonus/bonuses for this application?",
   },
 ];
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
   const content = `
-  # ${data.title}
-  
-  ## Description
-  ${data.purpose}
-  
-  ## Installation
-  ${data.install}
-  
-  ## Usage
-  ${data.use}
-  
-  ## Reporting Issues
-  ${data.issues}
-  
-  ## Contributions
-  ${data.contributions}
+# ${data.title}
+## Table of Contents
+1.[Description and Purpose](#description)
+
+2.[User Story](#userStory)
+
+3.[Acceptance Criteria](#acceptanceCriteria)
+
+4.[Wireframes and Mock-Ups](#mockups)
+
+5.[Installation](#installation)
+
+6.[Usage](#usage)
+
+7.[Contribution](#contribution)
+
+8.[License](#license)
+
+9.[Questions](#questions)
+
+## Description
+${data.description}
+
+${data.purpose}
+
+## Installation
+You can install this application by forking the repository from github.com/${data.githubUsername}/${data.repoName} and opening the repository in your text editor.  You will also want the LTS version of NPM so the node works.
+
+## Usage
+Functions that you will use to to use the application once you have installed it: 
+${data.use}
+
+## Contribution
+You can contribute to this application by opening a pull request at github.com/${data.githubUsername}/${data.repoName}.  Currently there are no rules or standards for contribution.
+
+## License
+${data.license}
+
+## Questions
+Known erros and other issues can be raised to the repository on github at github.com/${data.githubUsername}/${data.repoName} , or can be sent to my github profile at github.com/${data.githubUsername}. As last resort, questions can be emailed to me directly at ${data.email}
     `;
   fs.writeFile(fileName, content, (err) => {
     if (err) {
